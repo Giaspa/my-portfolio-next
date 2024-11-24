@@ -1,0 +1,42 @@
+name: SonarCloud analysis
+
+on:
+  push:
+    branches:
+      - "main"
+  pull_request:
+    branches:
+      - "main"
+
+jobs:
+  sonarcloud:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout repository
+        uses: actions/checkout@v4
+
+      - name: Set up JDK 17
+        uses: actions/setup-java@v3
+        with:
+          java-version: '17'
+          distribution: 'temurin'
+
+      - name: Install SonarScanner
+        run: |
+          npm install -g sonar-scanner
+
+      - name: Install dependencies
+        run: |
+          npm install
+
+      - name: SonarCloud Scan
+        env:
+          SONAR_TOKEN: ${{ secrets.SONAR___My_Portfolio_Next___TOKEN }}
+        run: |
+          sonar-scanner \
+          -Dsonar.projectKey=Giaspa_my-portfolio-next \
+          -Dsonar.organization=giaspa \
+          -Dsonar.host.url=https://sonarcloud.io \
+          -Dsonar.login=${{ secrets.SONAR___My_Portfolio_Next___TOKEN }} \
+          -Dsonar.branch.name=${{ github.ref_name }}
