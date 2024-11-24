@@ -1,36 +1,50 @@
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+# My Portfolio - Next.js Version
 
-## Getting Started
+Hello there! 👋 Welcome to the Next.js version of my portfolio!  
+This project is part of my personal initiative to create multiple versions of my portfolio using different frontend frameworks. Here’s why:
 
-First, run the development server:
+- 🥇**First**, to showcase my ability to work with various tools and technologies.  
+- 🥈**Second**, to explore and learn different approaches across frameworks. 
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
-```
+The goal is to write code that feels consistent across all versions of my portfolio, regardless of the underlying framework.
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+##  💻 Tech Stack
+<table width="100" align='center' >
+  <tr>
+      <td align='center' width="160">
+        <img src="https://raw.githubusercontent.com/gilbarbara/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/nextjs-icon.svg" width="40" title="Next.js"/>        
+      </td>
+<td align='center' width="160">
+        <img src="https://raw.githubusercontent.com/gilbarbara/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/react.svg" width="40" title="React.js"/>        
+      </td>
+<td align='center' width="160">
+        <img src="https://www.vectorlogo.zone/logos/tailwindcss/tailwindcss-icon.svg" width="40" title="Tailwind CSS"/>        
+      </td>
+<td align='center' width="160">
+        <img src="https://raw.githubusercontent.com/gilbarbara/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/daisyUI-icon.svg" width="40" title="DaisyUI"/>        
+      </td>
+<td align='center' width="160">
+        <img src="https://raw.githubusercontent.com/gilbarbara/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/sonarcloud-icon.svg" width="40" title="SonarCloud"/>        
+      </td>
+<td align='center' width="160">
+        <img src="https://raw.githubusercontent.com/gilbarbara/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/browserstack.svg" width="40" title="BrowserStack"/>        
+      </td>
+  </tr>
+</table>
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+- **Next.js** 15  
+- **React** 19  
+- **Vercel**  
+- **Tailwind CSS**  
+- **DaisyUI** 
+- **EmailJS**  
+- **SonarCloud**  
+- **GitHub**  
+- **BrowserStack**  
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+## 🚀 Deployment 
 
-## Learn More
+This portfolio is deployed on **Vercel**, the easiest way to launch a Next.js application.  
+You can learn more about deployment in the [Next.js documentation](https://nextjs.org/docs/app/building-your-application/deploying).
 
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Feel free to explore the live version and the codebase. Feedback is always welcome!
