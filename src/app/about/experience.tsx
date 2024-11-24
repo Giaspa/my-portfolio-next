@@ -4,7 +4,7 @@ type ExperienceProps = {
   experience: Exp;
 };
 
-export default function Experience({ experience }: ExperienceProps) {
+export default function Experience({ experience }: Readonly<ExperienceProps>) {
   return (
     <article className="collapse collapse-arrow glass">
       <input

@@ -1,10 +1,9 @@
-export default function Hero({
-  children,
-  imagePath,
-}: {
+type HeroProps = {
   children: React.ReactNode;
   imagePath: string;
-}) {
+};
+
+export default function Hero({ children, imagePath }: Readonly<HeroProps>) {
   return (
     <div className="flex p-4 lg:p-8 top-0 left-0 w-full h-full overflow-auto text-stone-300">
       <div className="flex flex-col justify-start z-10 gap-4 flex-1">

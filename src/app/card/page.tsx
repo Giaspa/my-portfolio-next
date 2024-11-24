@@ -17,7 +17,7 @@ export default function Card({
   imagePath,
   id,
   targetRoute,
-}: CardProps) {
+}: Readonly<CardProps>) {
   const router = useRouter();
   const pathname = usePathname();
   const [isActive, setIsActive] = useState(pathname === `/${targetRoute}`);
