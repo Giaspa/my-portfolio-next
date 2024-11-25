@@ -3,6 +3,8 @@ import Experience from "./experience";
 import Image from "next/image";
 import Header from "../ui/header";
 import Hero from "../ui/hero";
+import AssertItem from "./assert-item";
+import AssertItemProvider from "./assert-context";
 
 export default function About() {
   const experiences: Exp[] = MOCK_EXPERIENCES;
@@ -22,7 +24,9 @@ export default function About() {
           />
 
           <div className="">
-            {/* <app-assert-item key="a_who"></app-assert-item> */}
+            <AssertItemProvider>
+              <AssertItem />
+            </AssertItemProvider>
           </div>
         </section>
 
