@@ -27,6 +27,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <head>
+        <link rel="icon" href="/assets/svg/nextjs.svg" />
         <link
           href="https://fonts.googleapis.com/css2?family=Black+Ops+One&display=swap"
           rel="stylesheet"
