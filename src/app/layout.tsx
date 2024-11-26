@@ -2,6 +2,7 @@ import type { Metadata } from "next";
 import localFont from "next/font/local";
 import "./globals.css";
 import Card from "./card/page";
+import Navbar from "./ui/navbar/navbar";
 
 const geistSans = localFont({
   src: "./fonts/GeistVF.woff",
@@ -42,7 +43,7 @@ export default function RootLayout({
         className={`${geistSans.variable} ${geistMono.variable} antialiased`}
       >
         <div className="bg-radial-gradient h-screen flex flex-col relative overflow-hidden">
-          {/* <app-navbar className="h-28 absolute lg:right-0"></app-navbar> */}
+          <Navbar />
 
           <div className="flex-grow h-[calc(100%-15rem)]">{children}</div>
 

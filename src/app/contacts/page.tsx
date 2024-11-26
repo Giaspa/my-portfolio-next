@@ -57,7 +57,7 @@ export default function Contacts() {
     button = (
       <button
         type="submit"
-        className="btn bg-neutral text-stone-300 border-transparent hover:bg-neutral-content hover:text-white hover:border-transparent hover:animate-pulse w-1/3 self-center lg:self-end"
+        className="btn bg-neutral text-stone-300 border-transparent hover:bg-neutral-content hover:text-white hover:border-transparent hover:animate-pulse lg:w-1/3 self-center lg:self-end"
       >
         Send!
         <i className="fa-regular fa-paper-plane"></i>
@@ -67,7 +67,7 @@ export default function Contacts() {
     button = (
       <button
         type="button"
-        className="btn btn-error border-transparent w-1/3 self-center lg:self-end"
+        className="btn btn-error border-transparent lg:w-1/3 self-center lg:self-end"
         onClick={onRetry}
       >
         Ops... retry!
@@ -76,7 +76,7 @@ export default function Contacts() {
     );
   } else {
     button = (
-      <div className="btn btn-success border-transparent w-1/3 self-center lg:self-end hover:bg-success hover:cursor-default">
+      <div className="btn btn-success border-transparent lg:w-1/3 self-center lg:self-end hover:bg-success hover:cursor-default">
         Sent!
         <i className="fa-regular fa-thumbs-up"></i>
       </div>
