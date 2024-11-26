@@ -4,7 +4,7 @@ import NavbarSlim from "./navbar-slim";
 
 export default function Navbar() {
   return (
-    <nav className="h-28 absolute lg:right-0 flex justify-start lg:justify-end items-center p-5 bg-transparent z-20 text-stone-300">
+    <nav className="absolute lg:right-0 flex justify-start lg:justify-end items-center p-5 bg-transparent z-20 text-stone-300">
       <ul className="hidden lg:flex space-x-4 text-lg text-white align-middle">
         <li>Show in:</li>
 

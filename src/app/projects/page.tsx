@@ -24,7 +24,7 @@ function SkillsContent() {
 
   return (
     <Hero imagePath="assets/img/Projects.png">
-      <Header white="My" blue="Projecs" />
+      <Header white="My" blue="Projects" />
 
       {project ? (
         <ProjectCarousel />
