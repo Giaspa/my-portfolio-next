@@ -14,7 +14,6 @@ export default function AssertItem() {
   const nextKey = getNextKey();
 
   const messages = activeKeys.map((key, index) => {
-    console.log("🚀 ~ messages ~ key:", key, index);
     switch (index) {
       case 4:
         return "Let's just connect!";
@@ -36,7 +35,7 @@ export default function AssertItem() {
   }
 
   useEffect(() => {
-    if (btnRef.current) {
+    if (btnRef.current && activeKeys.length>1) {
       btnRef.current.scrollIntoView({ behavior: 'smooth', block: 'center' });
     }
   }, [activeKeys]);
