@@ -22,11 +22,9 @@ export default function Contacts() {
     clearErrors,
   } = useForm<FormData>();
 
-  let hasError: boolean = Object.keys(errors).length > 0;
+  const hasError: boolean = Object.keys(errors).length > 0;
 
   function onSubmit(templateForm: FormData) {
-    console.log("🚀 ~ onSubmit ~ templateForm:", templateForm);
-
     if (!hasError) {
       const { email, object, body } = templateForm;
 
@@ -37,15 +35,15 @@ export default function Contacts() {
           { reply_to: email, subject: object, message: body },
           process.env.NEXT_PUBLIC_EMAIL_USER_ID
         )
-        .then((result: EmailJSResponseStatus) => {
+        .then(() => {
           setIsSent(true);
         })
-        .catch((error) => {
+        .catch(() => {
           setIsSent(false);
         });
     }
   }
-  function onRetry(event: any) {
+  function onRetry(event: { preventDefault: () => void; }) {
     event.preventDefault();
     clearErrors(["email", "body", "object"]);
     reset();

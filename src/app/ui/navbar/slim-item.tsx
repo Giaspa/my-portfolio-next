@@ -1,6 +1,3 @@
-import { usePathname } from "next/navigation";
-import { useState } from "react";
-
 type PointType = "about" | "projects" | "skills" | "contacts";
 
 type SlimItemProps = {
@@ -10,8 +7,6 @@ type SlimItemProps = {
 };
 
 export default function SlimItem({ point, onNavigate, isActive }: SlimItemProps) {
-  const pathname = usePathname();
-
   function toNavigate() {
     onNavigate(point);
   }
