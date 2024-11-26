@@ -45,7 +45,6 @@ The goal is to write code that feels consistent across all versions of my portfo
 ## 🚀 Deployment 
 
 This portfolio is deployed on **Vercel**, the easiest way to launch a Next.js application.  
-You can learn more about deployment in the [Next.js documentation](https://nextjs.org/docs/app/building-your-application/deploying).
 
 Feel free to explore the [live version](https://my-portfolio-next-gamma.vercel.app) and the [codebase](https://github.com/Giaspa/my-portfolio-next). Feedback is always welcome!
 
