@@ -29,7 +29,7 @@ type ProviderActionType = {
     tabKey: keyof About;
   };
 };
-type AssertItemProvider = {
+type AssertProviderProps = {
   children: React.ReactNode;
 };
 
@@ -42,7 +42,7 @@ export const AssertContext: Context<AssertContextType> = createContext({
   getNextKey: () => {},
 } as AssertContextType);
 
-function AssertItemReducer(state: AssertType, action: ProviderActionType) {
+function AssertItemReducer(state: AssertType, action: ProviderActionType): AssertType {
   if (action.type === ActionType.EDIT) {
     return {
       ...state,
@@ -60,7 +60,7 @@ const initialState = {
   showTabs: DEFAULT_SHOW_TABS,
 };
 
-export default function AssertItemProvider({ children }: AssertItemProvider) {
+export default function AssertItemProvider({ children }: AssertProviderProps) {
   const [state, dispatch] = useReducer(AssertItemReducer, initialState);
 
   function handleUpdateTab(tabKey: keyof About) {
@@ -88,7 +88,7 @@ export default function AssertItemProvider({ children }: AssertItemProvider) {
       .map(([key]) => key as keyof About);
   }
 
-  const ctxValue = {
+  const ctxValue: AssertContextType = {
     showTabs: state.showTabs,
     setTab: handleUpdateTab,
     getCurrKey: handleGetActiveKeys,
