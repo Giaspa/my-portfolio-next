@@ -25,7 +25,7 @@ export const MOCK_PROJECTS: Project[] = [
       "SonarCloud",
       "Figma",
     ],
-    link: null,
+    link: "https://my-portfolio-next-gamma.vercel.app",
     github: "https://github.com/Giaspa/my-portfolio-next",
     isAvaible: true,
     description: "With this version of the portfolio, I wanted to explore the possibilities offered by React and Next.js, combining performance and simplicity in a single solution. The project was designed to highlight my ability to adapt to new technologies and leverage advanced tools like Tailwind and SonarCloud to create clean and accessible interfaces. This portfolio is not just a website but a concrete demonstration of my style and approach to the world of frontend development",
