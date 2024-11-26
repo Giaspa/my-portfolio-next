@@ -37,6 +37,7 @@ export default function FrameworkItem({
         title={title}
         className="grayscale hover:-translate-y-1 hover:grayscale-0 py-1 rounded-none flex flex-row gap-2"
         href={HREF}
+        rel="noopener"
       >
         {children}
         <span className="lg:hidden">{title}</span>
