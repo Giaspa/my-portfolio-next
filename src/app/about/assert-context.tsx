@@ -60,7 +60,7 @@ const initialState = {
   showTabs: DEFAULT_SHOW_TABS,
 };
 
-export default function AssertItemProvider({ children }: AssertProviderProps) {
+export default function AssertItemProvider({ children }: Readonly<AssertProviderProps>) {
   const [state, dispatch] = useReducer(AssertItemReducer, initialState);
 
   function handleUpdateTab(tabKey: keyof About) {

@@ -61,7 +61,7 @@ const initialState = {
   project: null,
 };
 
-export default function ProjectsProvider({ children }: ProjectProviderProps) {
+export default function ProjectsProvider({ children }: Readonly<ProjectProviderProps>) {
   const [state, dispatch] = useReducer(ProjectsReducer, initialState);
   const router = useRouter();
 

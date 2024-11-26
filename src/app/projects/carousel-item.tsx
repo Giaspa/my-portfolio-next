@@ -4,7 +4,7 @@ import { ProjectsContext } from "./projects-context";
 import { useRouter } from "next/navigation";
 import { ProjectProps } from "./project-button";
 
-export default function CarouselItem({ project }: ProjectProps) {
+export default function CarouselItem({ project }: Readonly<ProjectProps>) {
   const router = useRouter();
   const { svgs, setProject, goBack, goAhead } = useContext(ProjectsContext);
 

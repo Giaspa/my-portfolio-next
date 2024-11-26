@@ -8,7 +8,7 @@ export type ProjectProps = {
   project: Project;
 };
 
-export default function ProjectButton({ project }: ProjectProps) {
+export default function ProjectButton({ project }: Readonly<ProjectProps>) {
   const router = useRouter();
   const { svgs, setProject } = useContext(ProjectsContext);
 
