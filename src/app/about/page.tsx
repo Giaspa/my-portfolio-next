@@ -13,6 +13,16 @@ const fetchExperiences = async () => {
     `${baseUrl}/api/experiences`,
     { next: { revalidate: time } }
   );
+
+  if (!res.ok) {
+    throw new Error(`Failed to fetch: ${res.status} ${res.statusText}`);
+  }
+
+  const contentType = res.headers.get('content-type');
+  if (!contentType || !contentType.includes('application/json')) {
+    throw new Error('Response is not valid JSON');
+  }
+  
   return res.json();
 };
 
