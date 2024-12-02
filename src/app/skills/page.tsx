@@ -10,6 +10,15 @@ const fetchSkills = async () => {
     next: { revalidate: time },
   });
 
+  if (!res.ok) {
+    throw new Error(`Failed to fetch: ${res.status} ${res.statusText} - baseUrl: ${baseUrl}`);
+  }
+
+  const contentType = res.headers.get('content-type');
+  if (!contentType || !contentType.includes('application/json')) {
+    throw new Error('Response is not valid JSON');
+  }
+
   return res.json();
 };
 
