@@ -21,7 +21,7 @@ export default function Experience({ experience }: Readonly<ExperienceProps>) {
             {experience.whenFrom} - {experience.whentTo}
           </span>
         </span>
-        <span className="font-semibold font-mono"> {experience.where}</span>
+        <span className="font-semibold font-mono"> {experience.location}</span>
       </p>
 
       <p className="collapse-content">{experience.description}</p>

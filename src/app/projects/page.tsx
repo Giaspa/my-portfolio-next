@@ -10,7 +10,7 @@ import ProjectsProvider, { ProjectsContext } from "./projects-context";
 export default function Skills() {
   return (
     <ProjectsProvider>
-      <SkillsContent/>
+      <SkillsContent />
     </ProjectsProvider>
   );
 }
@@ -30,9 +30,13 @@ function SkillsContent() {
         <ProjectCarousel />
       ) : (
         <section className="flex-grow flex flex-col content-start lg:flex-row lg:flex-wrap gap-8 lg:justify-center lg:max-h-[calc(100vh-16rem-3rem)] lg:overflow-y-auto">
-          {projects.map((project) => (
-            <ProjectButton key={project.id} project={project} />
-          ))}
+          {projects.length === 0 ? (
+            <p>Loading projects...</p>
+          ) : (
+            projects.map((project) => (
+              <ProjectButton key={project.id} project={project} />
+            ))
+          )}
         </section>
       )}
     </Hero>

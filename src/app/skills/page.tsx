@@ -2,9 +2,19 @@ import { SkillByGroup, SKILLS_N_PATH_BY_GROUP } from "@/types/skill.model";
 import Header from "../ui/header";
 import Hero from "../ui/hero";
 import Image from "next/image";
+import { time } from "../api/projects/route";
 
-export default function Skills() {
-  const skillGroup: SkillByGroup[] = SKILLS_N_PATH_BY_GROUP;
+const fetchSkills = async () => {
+  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/skills`, {
+    next: { revalidate: time },
+  });
+
+  return res.json();
+};
+
+export default async function Skills() {
+  // const skillGroup: SkillByGroup[] = SKILLS_N_PATH_BY_GROUP;
+  const skillGroup: SkillByGroup[] = SKILLS_N_PATH_BY_GROUP(await fetchSkills());
 
   return (
     <Hero imagePath="assets/img/Skills.png">
@@ -19,13 +29,20 @@ export default function Skills() {
 
             <ul className="flex flex-col flex-wrap gap-y-1 gap-x-4 text-lg">
               {group.skills.map((item) => (
-                <li key={item.skill}
+                <li
+                  key={item.skill}
                   className="flex flex-row gap-2 items-center flex-1"
                   title={item.skill}
                 >
                   {item.path && (
                     <span className="w-4">
-                      <Image src={item.path} alt={item.skill} className="h-4" width={16} height={16} />
+                      <Image
+                        src={item.path}
+                        alt={item.skill}
+                        className="h-4"
+                        width={16}
+                        height={16}
+                      />
                     </span>
                   )}
 

@@ -1,13 +1,22 @@
-import { Experience as Exp, MOCK_EXPERIENCES } from "@/types/experience.model";
+import { Experience as Exp } from "@/types/experience.model";
 import Experience from "./experience";
 import Image from "next/image";
 import Header from "../ui/header";
 import Hero from "../ui/hero";
 import AssertItem from "./assert-item";
 import AssertItemProvider from "./assert-context";
+import { time } from "../api/projects/route";
 
-export default function About() {
-  const experiences: Exp[] = MOCK_EXPERIENCES;
+const fetchExperiences = async () => {
+  const res = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/api/experiences`,
+    { next: { revalidate: time } }
+  );
+  return res.json();
+};
+
+export default async function About() {
+  const experiences: Exp[] = await fetchExperiences();
 
   return (
     <Hero imagePath="assets/img/About.png">

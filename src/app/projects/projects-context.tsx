@@ -1,11 +1,11 @@
 "use client";
 
-import { MOCK_PROJECTS, Project } from "@/types/project.model";
+import { Project } from "@/types/project.model";
 import { SVG_MAP } from "@/types/svg.model";
 import { useRouter } from "next/navigation";
-import { Context, createContext, useReducer } from "react";
+import { Context, createContext, useEffect, useReducer, useState } from "react";
+import { time } from "../api/projects/route";
 
-const PROJECTS: Project[] = MOCK_PROJECTS;
 const SVGS: { [k: string]: string } = SVG_MAP;
 export type ProjectContextType = {
   project: Project | null;
@@ -33,7 +33,7 @@ type ProjectProviderProps = {
 
 export const ProjectsContext: Context<ProjectContextType> = createContext({
   project: null,
-  projects: PROJECTS,
+  projects: [],
   svgs: SVGS,
   setProject: (project?: Project) => {
     console.log(project);
@@ -42,7 +42,11 @@ export const ProjectsContext: Context<ProjectContextType> = createContext({
   goAhead: () => {},
   getNextId: () => {},
   getPrevId: () => {},
-} as ProjectContextType);
+} as unknown as ProjectContextType);
+
+const initialState = {
+  project: null,
+};
 
 function ProjectsReducer(
   state: ProjectType,
@@ -57,15 +61,31 @@ function ProjectsReducer(
   return state;
 }
 
-const initialState = {
-  project: null,
-};
-
-export default function ProjectsProvider({ children }: Readonly<ProjectProviderProps>) {
+export default function ProjectsProvider({
+  children,
+}: Readonly<ProjectProviderProps>) {
   const [state, dispatch] = useReducer(ProjectsReducer, initialState);
+  const [projects, setProjects] = useState<Project[]>([]);
   const router = useRouter();
 
-  const lastProjectsIndex = PROJECTS.length - 1;
+  useEffect(() => {
+    const fetchProjects = async () => {
+      try {
+        const res = await fetch(
+          `${process.env.NEXT_PUBLIC_API_URL}/api/projects`,
+          {next: { revalidate: time}}
+        );
+        const data = await res.json();
+        setProjects(data);
+      } catch (err) {
+        console.log("🚀 ~ fetchProjects ~ err:", err);
+      }
+    };
+
+    fetchProjects();
+  }, []);
+
+  const lastProjectsIndex = projects.length - 1;
 
   function handleSetProject(project?: Project) {
     dispatch({
@@ -80,12 +100,12 @@ export default function ProjectsProvider({ children }: Readonly<ProjectProviderP
     let project;
 
     if (state.project) {
-      const $index = PROJECTS.map((pr) => pr.id).indexOf(state.project?.id);
+      const $index = projects.map((pr) => pr.id).indexOf(state.project?.id);
 
       if ($index === 0) {
-        project = PROJECTS[lastProjectsIndex];
+        project = projects[lastProjectsIndex];
       } else {
-        project = PROJECTS[$index - 1];
+        project = projects[$index - 1];
       }
 
       handleSetProject(project);
@@ -101,12 +121,12 @@ export default function ProjectsProvider({ children }: Readonly<ProjectProviderP
     let project;
 
     if (state.project) {
-      const $index = PROJECTS.map((pr) => pr.id).indexOf(state.project?.id);
+      const $index = projects.map((pr) => pr.id).indexOf(state.project?.id);
 
       if ($index === lastProjectsIndex) {
-        project = PROJECTS[0];
+        project = projects[0];
       } else {
-        project = PROJECTS[$index + 1];
+        project = projects[$index + 1];
       }
 
       handleSetProject(project);
@@ -122,40 +142,40 @@ export default function ProjectsProvider({ children }: Readonly<ProjectProviderP
     let project;
 
     if (state.project) {
-      const $index = PROJECTS.map((pr) => pr.id).indexOf(state.project?.id);
+      const $index = projects.map((pr) => pr.id).indexOf(state.project?.id);
 
       if ($index === lastProjectsIndex) {
-        project = PROJECTS[0];
+        project = projects[0];
       } else {
-        project = PROJECTS[$index + 1];
+        project = projects[$index + 1];
       }
 
       return project.id;
     }
-    return PROJECTS[0].id;
+    return projects[0].id;
   }
 
   function handleGetPrevId() {
     let project;
 
     if (state.project) {
-      const $index = PROJECTS.map((pr) => pr.id).indexOf(state.project?.id);
+      const $index = projects.map((pr) => pr.id).indexOf(state.project?.id);
 
       if ($index === 0) {
-        project = PROJECTS[lastProjectsIndex];
+        project = projects[lastProjectsIndex];
       } else {
-        project = PROJECTS[$index - 1];
+        project = projects[$index - 1];
       }
 
       return project.id;
-    } 
-    
-    return PROJECTS[0].id;
+    }
+
+    return projects[0].id;
   }
 
   const ctxValue: ProjectContextType = {
     project: state.project,
-    projects: PROJECTS,
+    projects,
     svgs: SVGS,
     setProject: handleSetProject,
     goBack: handleGoBack,
