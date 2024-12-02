@@ -6,10 +6,11 @@ import Hero from "../ui/hero";
 import AssertItem from "./assert-item";
 import AssertItemProvider from "./assert-context";
 import { time } from "@/types/common";
+import { baseUrl } from "@/types/fetch";
 
 const fetchExperiences = async () => {
   const res = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/api/experiences`,
+    `${baseUrl}/api/experiences`,
     { next: { revalidate: time } }
   );
   return res.json();

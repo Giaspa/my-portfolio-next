@@ -3,9 +3,10 @@ import Header from "../ui/header";
 import Hero from "../ui/hero";
 import Image from "next/image";
 import { time } from "@/types/common";
+import { baseUrl } from "@/types/fetch";
 
 const fetchSkills = async () => {
-  const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/skills`, {
+  const res = await fetch(`${baseUrl}/api/skills`, {
     next: { revalidate: time },
   });
 

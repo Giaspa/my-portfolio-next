@@ -1,6 +1,7 @@
 "use client";
 
 import { time } from "@/types/common";
+import { baseUrl } from "@/types/fetch";
 import { Project } from "@/types/project.model";
 import { SVG_MAP } from "@/types/svg.model";
 import { useRouter } from "next/navigation";
@@ -72,7 +73,7 @@ export default function ProjectsProvider({
     const fetchProjects = async () => {
       try {
         const res = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/api/projects`,
+          `${baseUrl}/api/projects`,
           {next: { revalidate: time}}
         );
         const data = await res.json();
