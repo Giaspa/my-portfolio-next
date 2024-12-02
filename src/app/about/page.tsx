@@ -32,8 +32,8 @@ export default async function About() {
         </section>
 
         <section className="flex-1 flex flex-col gap-2 lg:overflow-y-auto lg:max-h-[calc(100vh-16rem-3rem)] lg:pr-4">
-          {experiences.map((exp, index) => (
-            <Experience experience={exp} key={`work-experience-${index + 1}`} />
+          {experiences.sort((a, b) => a.id - b.id).map((exp) => (
+            <Experience experience={exp} key={`work-experience-${exp.id}`} />
           ))}
         </section>
       </div>
