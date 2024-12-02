@@ -4,7 +4,7 @@
   "private": true,
   "scripts": {
     "dev": "next dev",
-    "build": "next build",
+    "build": "prisma generate && next build",
     "schema-sincro": "npx prisma db push",
     "genera client prisma": "npx prisma generate",
     "generate-pages-tree": "node generatePagesTree.js",
