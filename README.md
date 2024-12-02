@@ -23,21 +23,31 @@ The goal is to write code that feels consistent across all versions of my portfo
 <td align='center' width="160">
         <img src="https://raw.githubusercontent.com/gilbarbara/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/daisyUI-icon.svg" width="40" title="DaisyUI"/>        
       </td>
+  </tr>
+<tr>
+<td align='center' width="160">
+        <img src="https://raw.githubusercontent.com/Giaspa/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/supabase-icon.svg" width="40" title="Supabase"/>        
+      </td>
+<td align='center' width="160">
+        <img src="https://raw.githubusercontent.com/Giaspa/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/prisma.svg" width="40" title="Prisma"/>        
+      </td>
 <td align='center' width="160">
         <img src="https://raw.githubusercontent.com/gilbarbara/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/sonarcloud-icon.svg" width="40" title="SonarCloud"/>        
       </td>
 <td align='center' width="160">
         <img src="https://raw.githubusercontent.com/gilbarbara/logos/92bb74e98bca1ea1ad794442676ebc4e75038adc/logos/browserstack.svg" width="40" title="BrowserStack"/>        
       </td>
-  </tr>
+</tr>
 </table>
 
 - **Next.js** 15  
 - **React** 19  
-- **Vercel**  
-- **Tailwind CSS**  
+- **Vercel** deploy
+- **Tailwind CSS** 
 - **DaisyUI** 
-- **EmailJS**  
+- **EmailJS** service
+- **Supabase** database
+- **Prisma** ORM  
 - **SonarCloud**  
 - **GitHub**  
 - **BrowserStack**  
