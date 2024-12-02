@@ -5,30 +5,9 @@ import Header from "../ui/header";
 import Hero from "../ui/hero";
 import AssertItem from "./assert-item";
 import AssertItemProvider from "./assert-context";
-import { time } from "@/types/common";
-import { baseUrl } from "@/types/fetch";
 import { prisma } from "../../../prisma/db";
 
-// const fetchExperiences = async () => {
-//   const res = await fetch(
-//     `${baseUrl}/api/experiences`,
-//     { next: { revalidate: time } }
-//   );
-
-  // if (!res.ok) {
-  //   throw new Error(`Failed to fetch: ${res.status} ${res.statusText} - baseUrl: ${baseUrl}`);
-  // }
-
-  // const contentType = res.headers.get('content-type');
-  // if (!contentType || !contentType.includes('application/json')) {
-  //   throw new Error('Response is not valid JSON');
-  // }
-
-//   return res.json();
-// };
-
 export default async function About() {
-  // const experiences: Exp[] = await fetchExperiences();
   const experiences = await prisma.experience.findMany() as unknown as Exp[];
 
   return (
