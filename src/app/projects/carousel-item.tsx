@@ -14,7 +14,7 @@ export default function CarouselItem({ project }: Readonly<ProjectProps>) {
   }
 
   return (
-    <div id={project.id} className="carousel-item relative w-full">
+    <div id={`${project.id}`} className="carousel-item relative w-full">
       <img
         src="https://img.daisyui.com/images/stock/photo-1625726411847-8cbb60cc71e6.webp"
         alt="Cover"
