@@ -1,10 +1,11 @@
 "use client";
 
+import { time } from "@/types/common";
+import { baseUrl } from "@/types/fetch";
 import { Project } from "@/types/project.model";
 import { SVG_MAP } from "@/types/svg.model";
 import { useRouter } from "next/navigation";
 import { Context, createContext, useEffect, useReducer, useState } from "react";
-import { prisma } from "../../../prisma/db";
 
 const SVGS: { [k: string]: string } = SVG_MAP;
 export type ProjectContextType = {
@@ -71,7 +72,11 @@ export default function ProjectsProvider({
   useEffect(() => {
     const fetchProjects = async () => {
       try {
-        const data = await prisma.project.findMany() as unknown as Project[];
+        const res = await fetch(`${baseUrl}/api/projects`, {
+          next: { revalidate: time },
+        });
+        if (!res.ok) throw new Error(`Error: ${res.status} ${res.statusText}`);
+        const data = await res.json();
         setProjects(data);
       } catch (err) {
         console.log("🚀 ~ fetchProjects ~ err:", err);
