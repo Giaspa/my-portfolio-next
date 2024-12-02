@@ -1,10 +1,10 @@
 "use client";
 
+import { time } from "@/types/common";
 import { Project } from "@/types/project.model";
 import { SVG_MAP } from "@/types/svg.model";
 import { useRouter } from "next/navigation";
 import { Context, createContext, useEffect, useReducer, useState } from "react";
-import { time } from "../api/projects/route";
 
 const SVGS: { [k: string]: string } = SVG_MAP;
 export type ProjectContextType = {
