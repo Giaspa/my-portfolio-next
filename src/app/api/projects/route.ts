@@ -9,7 +9,7 @@ export async function GET() {
     const headers = new Headers({
         "Content-Type": "application/json",
         "Cache-Control": `s-maxage=${time}, stale-while-revalidate=${time}`,
-        "Access-Control-Allow-Origin": `${process.env.NEXT_PUBLIC_BASE_URL}`,
+        "Access-Control-Allow-Origin": `*`,
     });
 
     return NextResponse.json(projects, { headers });
