@@ -3,7 +3,7 @@ import { time } from "@/types/common";
 import { createClient } from "@/supabase/client";
 
 export async function GET() {
-    const supabase = await createClient();
+    const supabase = createClient();
     const { data: projects } = await supabase.from("Project").select();
 
     const headers = new Headers({
