@@ -4,27 +4,28 @@ import Hero from "../ui/hero";
 import Image from "next/image";
 import { time } from "@/types/common";
 import { baseUrl } from "@/types/fetch";
+import { prisma } from "../../../prisma/db";
 
-const fetchSkills = async () => {
-  const res = await fetch(`${baseUrl}/api/skills`, {
-    next: { revalidate: time },
-  });
+// const fetchSkills = async () => {
+//   const res = await fetch(`${baseUrl}/api/skills`, {
+//     next: { revalidate: time },
+//   });
 
-  if (!res.ok) {
-    throw new Error(`Failed to fetch: ${res.status} ${res.statusText} - baseUrl: ${baseUrl}`);
-  }
+//   if (!res.ok) {
+//     throw new Error(`Failed to fetch: ${res.status} ${res.statusText} - baseUrl: ${baseUrl}`);
+//   }
 
-  const contentType = res.headers.get('content-type');
-  if (!contentType || !contentType.includes('application/json')) {
-    throw new Error('Response is not valid JSON');
-  }
+//   const contentType = res.headers.get('content-type');
+//   if (!contentType || !contentType.includes('application/json')) {
+//     throw new Error('Response is not valid JSON');
+//   }
 
-  return res.json();
-};
+//   return res.json();
+// };
 
 export default async function Skills() {
   // const skillGroup: SkillByGroup[] = SKILLS_N_PATH_BY_GROUP;
-  const skillGroup: SkillByGroup[] = SKILLS_N_PATH_BY_GROUP(await fetchSkills());
+  const skillGroup: SkillByGroup[] = SKILLS_N_PATH_BY_GROUP(await prisma.skill.findMany());
 
   return (
     <Hero imagePath="assets/img/Skills.png">
