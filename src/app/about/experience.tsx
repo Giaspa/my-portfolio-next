@@ -18,7 +18,7 @@ export default function Experience({ experience }: Readonly<ExperienceProps>) {
           </span>
 
           <span className="order-1 lg:order-2">
-            {experience.whenFrom} - {experience.whentTo}
+            {experience.whenFrom} - {experience.whenTo}
           </span>
         </span>
         <span className="font-semibold font-mono"> {experience.location}</span>

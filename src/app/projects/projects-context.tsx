@@ -15,8 +15,8 @@ export type ProjectContextType = {
   setProject: (project?: Project) => void;
   goBack: () => void;
   goAhead: () => void;
-  getNextId: () => string;
-  getPrevId: () => string;
+  getNextId: () => number;
+  getPrevId: () => number;
 };
 type ProjectType = {
   project: Project | null;
@@ -76,8 +76,8 @@ export default function ProjectsProvider({
           next: { revalidate: time },
         });
         if (!res.ok) throw new Error(`Error: ${res.status} ${res.statusText}`);
-        const data = await res.json();
-        setProjects(data);
+        const data = await res.json() as Project[];
+        setProjects(data.sort((a, b) => a.id - b.id));
       } catch (err) {
         console.log("🚀 ~ fetchProjects ~ err:", err);
       }
