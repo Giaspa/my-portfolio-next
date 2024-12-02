@@ -5,7 +5,7 @@ import Header from "../ui/header";
 import Hero from "../ui/hero";
 import AssertItem from "./assert-item";
 import AssertItemProvider from "./assert-context";
-import { time } from "../api/projects/route";
+import { time } from "@/types/common";
 
 const fetchExperiences = async () => {
   const res = await fetch(

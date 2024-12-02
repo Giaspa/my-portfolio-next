@@ -2,7 +2,7 @@ import { SkillByGroup, SKILLS_N_PATH_BY_GROUP } from "@/types/skill.model";
 import Header from "../ui/header";
 import Hero from "../ui/hero";
 import Image from "next/image";
-import { time } from "../api/projects/route";
+import { time } from "@/types/common";
 
 const fetchSkills = async () => {
   const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/api/skills`, {
