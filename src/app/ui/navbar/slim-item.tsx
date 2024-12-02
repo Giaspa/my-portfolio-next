@@ -6,7 +6,7 @@ type SlimItemProps = {
   isActive: boolean
 };
 
-export default function SlimItem({ point, onNavigate, isActive }: SlimItemProps) {
+export default function SlimItem({ point, onNavigate, isActive }: Readonly<SlimItemProps>) {
   function toNavigate() {
     onNavigate(point);
   }

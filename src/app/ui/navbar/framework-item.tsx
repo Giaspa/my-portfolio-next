@@ -13,7 +13,7 @@ export default function FrameworkItem({
   title,
   children,
   link,
-}: FrameworkItemProps) {
+}: Readonly<FrameworkItemProps>) {
   const pathname = usePathname();
 
   let content = (

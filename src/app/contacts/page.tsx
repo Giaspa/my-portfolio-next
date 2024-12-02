@@ -4,7 +4,7 @@ import { useForm } from "react-hook-form";
 import Header from "../ui/header";
 import Hero from "../ui/hero";
 import { useState } from "react";
-import emailjs, { EmailJSResponseStatus } from "emailjs-com";
+import emailjs from "emailjs-com";
 
 type FormData = {
   email: string;
@@ -57,7 +57,7 @@ export default function Contacts() {
         type="submit"
         className="btn bg-neutral text-stone-300 border-transparent hover:bg-neutral-content hover:text-white hover:border-transparent hover:animate-pulse lg:w-1/3 self-center lg:self-end"
       >
-        Send!
+        Send!{' '}
         <i className="fa-regular fa-paper-plane"></i>
       </button>
     );
@@ -68,14 +68,14 @@ export default function Contacts() {
         className="btn btn-error border-transparent lg:w-1/3 self-center lg:self-end"
         onClick={onRetry}
       >
-        Ops... retry!
+        Ops... retry!{' '}
         <i className="fa-regular fa-thumbs-down"></i>
       </button>
     );
   } else {
     button = (
       <div className="btn btn-success border-transparent lg:w-1/3 self-center lg:self-end hover:bg-success hover:cursor-default">
-        Sent!
+        Sent!{' '}
         <i className="fa-regular fa-thumbs-up"></i>
       </div>
     );
@@ -97,7 +97,7 @@ export default function Contacts() {
 
         <li className="glass p-4 lg:p-8 flex flex-col gap-2 lg:gap-4 justify-center items-center order-4 lg:order-3">
           <p className="font-mono text-2xl font-semibold">
-            <i className="fa-solid fa-envelope fa-sm mr-2"></i>
+            <i className="fa-solid fa-envelope fa-sm mr-2"></i>{' '}
             E-mail
           </p>
 

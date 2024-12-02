@@ -79,7 +79,7 @@ export default function NavbarSlim() {
             />
           </li>
           <li className="h-8">
-            <a></a>
+            <a>{' '}</a>
           </li>
           <li>
             <a>Show in:</a>
