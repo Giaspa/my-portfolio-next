@@ -6,11 +6,10 @@ import Hero from "../ui/hero";
 import AssertItem from "./assert-item";
 import AssertItemProvider from "./assert-context";
 import { prisma } from "../../../prisma/db";
-import { time } from "@/types/common";
 import { parseDate } from "@/utils/date";
 
-// Revalidation ogni 10 minuti
-export const revalidate = time;
+// Revalidation ogni 10 minuti (600 secondi)
+export const revalidate = 600;
 
 export default async function About() {
   const experiences = await prisma.experience.findMany() as unknown as Exp[];
