@@ -4,6 +4,7 @@ import { time } from "@/types/common";
 import { baseUrl } from "@/types/fetch";
 import { Project } from "@/types/project.model";
 import { SVG_MAP } from "@/types/svg.model";
+import { parseDate } from "@/utils/date";
 import { useRouter } from "next/navigation";
 import { Context, createContext, useEffect, useReducer, useState } from "react";
 
@@ -77,7 +78,13 @@ export default function ProjectsProvider({
         });
         if (!res.ok) throw new Error(`Error: ${res.status} ${res.statusText}`);
         const data = await res.json() as Project[];
-        setProjects(data.sort((a, b) => a.id - b.id));
+        // Ordina per data (dateFrom) in ordine decrescente (più recenti prima)
+        const sortedProjects = data.sort((a, b) => {
+          const dateA = parseDate(a.dateFrom);
+          const dateB = parseDate(b.dateFrom);
+          return dateB.getTime() - dateA.getTime(); // Ordine decrescente
+        });
+        setProjects(sortedProjects);
       } catch (err) {
         console.log("🚀 ~ fetchProjects ~ err:", err);
       }

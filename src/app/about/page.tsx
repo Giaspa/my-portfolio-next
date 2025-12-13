@@ -6,9 +6,21 @@ import Hero from "../ui/hero";
 import AssertItem from "./assert-item";
 import AssertItemProvider from "./assert-context";
 import { prisma } from "../../../prisma/db";
+import { time } from "@/types/common";
+import { parseDate } from "@/utils/date";
+
+// Revalidation ogni 10 minuti
+export const revalidate = time;
 
 export default async function About() {
   const experiences = await prisma.experience.findMany() as unknown as Exp[];
+
+  // Ordina per data (whenFrom) in ordine decrescente (più recenti prima)
+  const sortedExperiences = experiences.sort((a, b) => {
+    const dateA = parseDate(a.whenFrom);
+    const dateB = parseDate(b.whenFrom);
+    return dateB.getTime() - dateA.getTime(); // Ordine decrescente
+  });
 
   return (
     <Hero imagePath="assets/img/About.png">
@@ -32,7 +44,7 @@ export default async function About() {
         </section>
 
         <section className="flex-1 flex flex-col gap-2 lg:overflow-y-auto lg:max-h-[calc(100vh-16rem-3rem)] lg:pr-4">
-          {experiences.sort((a, b) => a.id - b.id).map((exp) => (
+          {sortedExperiences.map((exp) => (
             <Experience experience={exp} key={`work-experience-${exp.id}`} />
           ))}
         </section>
