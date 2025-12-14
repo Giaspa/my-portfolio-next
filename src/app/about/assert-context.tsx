@@ -47,8 +47,8 @@ export const AssertContext: Context<AssertContextType> = createContext({
   setTab: (tabKey: keyof About) => {
     console.log(tabKey);
   },
-  getCurrKey: () => {},
-  getNextKey: () => {},
+  getCurrKey: () => [] as (keyof About)[],
+  getNextKey: () => null as keyof About | null,
 } as AssertContextType);
 
 function AssertItemReducer(state: AssertType, action: ProviderActionType): AssertType {
