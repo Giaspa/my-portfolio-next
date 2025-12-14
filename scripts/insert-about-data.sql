@@ -12,3 +12,4 @@ INSERT INTO "AboutSection" ("sectionKey", "text", "order") VALUES
 ('e_and', 'When I''m not writing code for work, you''re likely to find me reading up on the latest IT trends, prototyping new ideas or finding creative solutions to complex challenges.', 0),
 ('e_and', 'I am a firm believer in the power of collaboration and am always looking for ways to share knowledge and grow with my colleagues.', 1);
 
+

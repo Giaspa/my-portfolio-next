@@ -33,3 +33,4 @@ export function transformAboutSections(sections: AboutSectionFromDB[]): About {
   return result;
 }
 
+
