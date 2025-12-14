@@ -8,7 +8,7 @@ import AssertItemProvider from "./assert-context";
 import { prisma } from "../../../prisma/db";
 import { parseDate } from "@/utils/date";
 import { transformAboutSections } from "@/utils/about";
-import { About } from "@/types/about.model";
+import type { About } from "@/types/about.model";
 
 // Revalidation ogni 10 minuti (600 secondi)
 export const revalidate = 600;
