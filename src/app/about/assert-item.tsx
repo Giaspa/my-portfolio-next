@@ -1,12 +1,11 @@
 "use client";
 
-import { MOCK_ABOUT } from "@/types/about.model";
 import { useRouter } from "next/navigation";
 import { useContext, useEffect, useRef } from "react";
 import { AssertContext } from "./assert-context";
 
 export default function AssertItem() {
-  const { setTab, getCurrKey, getNextKey } = useContext(AssertContext);
+  const { aboutData, setTab, getCurrKey, getNextKey } = useContext(AssertContext);
   const router = useRouter();
   const btnRef = useRef<HTMLButtonElement | null>(null);
 
@@ -45,7 +44,7 @@ export default function AssertItem() {
       {activeKeys.map((key, index, array) => (
         <div key={key}>
           <p className="font-mono text-lg flex flex-col text-pretty py-2">
-            {MOCK_ABOUT[key]?.map((assert, idx) => (
+            {aboutData[key]?.map((assert, idx) => (
               <span key={`assert-item-${key}-${idx}`}>{assert}</span>
             ))}
           </p>

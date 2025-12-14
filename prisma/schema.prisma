@@ -53,3 +53,10 @@ model ProjectSkill {
   skill     Skill    @relation(fields: [skillId], references: [id])
   skillId   Int
 }
+
+model AboutSection {
+  id        Int     @id @default(autoincrement())
+  sectionKey String  // a_who, b_when, c_so, d_learn, e_and
+  text      String
+  order     Int     @default(0) // Per ordinare i testi nella stessa sezione
+}

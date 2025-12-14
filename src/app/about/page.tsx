@@ -7,12 +7,18 @@ import AssertItem from "./assert-item";
 import AssertItemProvider from "./assert-context";
 import { prisma } from "../../../prisma/db";
 import { parseDate } from "@/utils/date";
+import { transformAboutSections } from "@/utils/about";
+import { About } from "@/types/about.model";
 
 // Revalidation ogni 10 minuti (600 secondi)
 export const revalidate = 600;
 
 export default async function About() {
   const experiences = await prisma.experience.findMany() as unknown as Exp[];
+  const aboutSections = await prisma.aboutSection.findMany();
+  
+  // Trasforma i dati del DB nel formato atteso
+  const aboutData: About = transformAboutSections(aboutSections);
 
   // Ordina per data (whenFrom) in ordine decrescente (più recenti prima)
   const sortedExperiences = experiences.sort((a, b) => {
@@ -36,7 +42,7 @@ export default async function About() {
           />
 
           <div className="">
-            <AssertItemProvider>
+            <AssertItemProvider aboutData={aboutData}>
               <AssertItem />
             </AssertItemProvider>
           </div>

@@ -12,6 +12,7 @@ const DEFAULT_SHOW_TABS: Record<keyof About, boolean> = {
 };
 
 export type AssertContextType = {
+  aboutData: About;
   showTabs: Record<keyof About, boolean>;
   setTab: (tabKey: keyof About) => void;
   getCurrKey: () => (keyof About)[];
@@ -31,9 +32,17 @@ type ProviderActionType = {
 };
 type AssertProviderProps = {
   children: React.ReactNode;
+  aboutData: About;
 };
 
 export const AssertContext: Context<AssertContextType> = createContext({
+  aboutData: {
+    a_who: [],
+    b_when: [],
+    c_so: [],
+    d_learn: [],
+    e_and: [],
+  },
   showTabs: DEFAULT_SHOW_TABS,
   setTab: (tabKey: keyof About) => {
     console.log(tabKey);
@@ -60,7 +69,7 @@ const initialState = {
   showTabs: DEFAULT_SHOW_TABS,
 };
 
-export default function AssertItemProvider({ children }: Readonly<AssertProviderProps>) {
+export default function AssertItemProvider({ children, aboutData }: Readonly<AssertProviderProps>) {
   const [state, dispatch] = useReducer(AssertItemReducer, initialState);
 
   function handleUpdateTab(tabKey: keyof About) {
@@ -89,6 +98,7 @@ export default function AssertItemProvider({ children }: Readonly<AssertProvider
   }
 
   const ctxValue: AssertContextType = {
+    aboutData,
     showTabs: state.showTabs,
     setTab: handleUpdateTab,
     getCurrKey: handleGetActiveKeys,
